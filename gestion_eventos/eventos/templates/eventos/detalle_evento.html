@@ -1,0 +1,15 @@
+<h1>Detalles del Evento: {{ evento.titulo }}</h1>
+<p>Descripción: {{ evento.descripcion }}</p>
+<p>Fecha: {{ evento.fecha_evento }}</p>
+<p>Organizado por: {{ evento.organizador.nombre }}</p>
+
+<h2>Usuarios Registrados:</h2>
+<ul>
+    {% for registro in registros %}
+    <li>{{ registro.usuario.nombre }} - Registrado el {{ registro.fecha_registro }}</li>
+    {% empty %}
+    <li>No hay usuarios registrados aún.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'listar_eventos' %}">Volver a la lista de eventos</a>

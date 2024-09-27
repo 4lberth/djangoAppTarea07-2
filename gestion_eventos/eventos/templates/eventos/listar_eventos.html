@@ -1,0 +1,17 @@
+<h1>Lista de Eventos</h1>
+<a href="{% url 'agregar_evento' %}">Agregar Evento</a> | 
+<a href="{% url 'agregar_usuario' %}">Agregar Usuario</a> | 
+<a href="{% url 'registrar_evento' %}">Registrar en Evento</a>
+
+<ul>
+    {% for evento in eventos %}
+    <li>
+        {{ evento.titulo }} - {{ evento.fecha_evento }} - Organizado por: {{ evento.organizador.nombre }} 
+        | <a href="{% url 'detalle_evento' evento.id %}">Detalles</a> 
+        | <a href="{% url 'actualizar_evento' evento.id %}">Editar</a> 
+        | <a href="{% url 'eliminar_evento' evento.id %}">Eliminar</a>
+    </li>
+    {% empty %}
+    <li>No hay eventos disponibles.</li>
+    {% endfor %}
+</ul>
